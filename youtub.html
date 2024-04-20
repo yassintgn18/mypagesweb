@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Youtub.com Clone</title>
+
+        <style>
+
+            p {
+                color: white;
+            }
+            header {
+                display: flex;
+                background-color: white;
+                flex-direction: row;
+                height: 50PX;
+                justify-content: space-between;
+                position: fixed;
+                top: 0%;
+                left: 0%;
+                right: 0PX;
+                border-bottom: 1px solid rgb(195, 195, 195);
+                z-index: 100;   
+            }
+            .left {
+                width: 200PX;
+                align-items: center;
+                display: flex;
+            }
+            .three_lines {
+                height: 35PX;
+                margin-left: 20px;
+                margin-right: 20PX;
+                cursor: pointer;
+            }
+            .three_lines:hover {
+                background-color: rgb(166, 166, 166);
+            }
+            .youtub_icon {
+                height: 40PX; 
+            }
+            .search {
+                flex: 1;
+                margin-left: 100PX;
+                margin-right: 100PX;
+                
+                max-width: 600PX;
+                display: flex;
+                align-items: center;
+            }
+            button {
+                border: none;
+                padding: 0%;
+                background-color: rgb(250, 254, 255);
+            }
+            .search_icon {
+                width: 80PX;
+                height: 43PX;
+                margin-top:4PX ;
+                background-color: rgb(236, 236, 236);
+                border: 1px solid rgb(188, 188, 188);
+                border-radius: 2PX;
+                border-top-right-radius: 0%;
+                margin-right: 10PX;
+                cursor: pointer;
+                position: relative;
+            }
+            .search_button .tooltip {
+                position: absolute;
+                background-color: gray;
+                color: rgb(255, 255, 255);
+                padding: 4PX;
+                margin-left: 18PX;
+                margin-top: -8px;
+                opacity: 0;
+                transition: opacity 0.25s;
+                pointer-events: none;
+            }
+            .search_button:hover .tooltip {
+                opacity: 1;
+
+            }
+            .search_button_v .tooltip1 {
+                position: absolute;
+                background-color: gray;
+                color: rgb(255, 255, 255);
+                padding: 4PX;
+                
+                margin-left: 18PX;
+                margin-top: -8px;
+                opacity: 0;
+                transition: opacity 0.25s;
+                pointer-events: none;
+            }
+            .search_button_v:hover .tooltip1{
+                opacity: 1;
+            }
+            .microphone_ico {
+                height: 35PX;
+                width: 40PX;
+                border-radius: 20PX;
+                cursor: pointer;
+                margin-bottom: 7PX;
+            }
+            .right {
+                flex-shrink: 0;
+                width:250PX;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-right: 20PX;
+            }
+            
+            .home_icon {
+                height: 45PX;
+                width: 50PX;
+                cursor: pointer;
+            }
+            .home_icon:hover {
+                background-color: rgb(218, 218, 218);
+            }
+            .telecharger_icon {
+                height: 41PX;
+                width: 40PX;
+                cursor: pointer;
+            }
+            .telecharger_icon:hover {
+                background-color: rgb(228, 228, 228);
+            }
+            .notification_icon {
+                cursor: pointer;
+                height: 42PX;
+                width: 50PX;
+            }
+            .notification_icon:hover {
+                background-color: rgb(225, 225, 225);
+            }
+            .notification_number {
+                position: relative;
+            }
+            .number_of_notifications {
+                position: absolute;
+                top: 4PX;
+                right: 2PX;
+                background-color: rgb(216, 0, 0);
+                color: white;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 16PX;
+                padding-left: 4PX;
+                padding-right: 4PX;
+                border:0px solid rgb(152, 0, 0);
+                border-radius: 10PX;
+
+                
+            }
+            .profile_icon {
+                height: 45PX;
+                width: 40PX;
+                border-radius: 20PX;
+                cursor: pointer;
+            }
+            .profile_icon:hover {
+                background-color: rgb(179, 179, 179);
+            }
+            .sidebar {
+                
+                color: black;
+                position: fixed;
+                left: 0%;
+                top: 70PX;
+                width: 100px;
+                bottom: 0%;
+            }
+            .sidebar_link {
+                cursor: pointer;
+                height: 75PX;
+                margin-bottom: 1px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+
+            }
+            .sidebar_link img {
+                height: 32PX;
+            }
+            .sidebar_link div {
+                font-family: arial;
+                font-size: 12PX;
+            }
+            .sidebar_link:hover {
+                background-color: rgb(214, 214, 214);
+            }
+            .page-info {
+                display: grid;
+                grid-template-columns: 70PX 1fr;
+            }
+            .img {
+                width: 100%;
+                cursor: pointer;
+            }
+            .ser {
+                height: 25px;
+                border: 1px solid black;
+                border-radius: 3px;
+                display: inline-block;
+                font-size: 22px;
+                border: 1px solid rgb(199, 199, 199);
+                border-radius: 3PX;
+                border-top-right-radius: 0%;
+                box-shadow: inset 1PX 1PX 1PX rgb(135, 135, 135);
+                width: 0;
+            }
+            .ser::placeholder {
+                font-family: Roboto, Arial, Helvetica, sans-serif;
+                padding-left: 10PX;
+            }
+            .w {
+                margin-left: 10px;
+                font-size: 22px;
+                border: 1px solid black;
+                border-radius: 3px;
+            }
+            p{
+                font-family: Arial;
+                margin: 0%;
+            
+            }
+            .video_title {
+                margin-top: 10PX;
+                font-weight: bold;
+                color: black;
+            }
+            .video-description {
+                font-size: 15px;
+                color: rgb(101, 101, 101);
+                width: 300px;
+                margin-bottom: 100px;
+            }
+            .video-stats {
+                font-size: 13px;
+                color: rgb(101, 101, 101);
+                margin-bottom: 0px;
+            }
+            .video-author {
+                font-size: 13px;
+                color: rgb(101, 101, 101);
+                margin-bottom: 0px;
+                margin-top: 0%;
+            }
+            .linux-apple {
+                margin-bottom: 50px;
+                font-size: 13px;
+                background-color: rgb(255, 42, 42);
+                color: white;
+                text-align: center;
+                padding-top: 14px;
+                padding-block: 14px;
+            }
+            .page {
+                vertical-align: top;
+                margin-right: 5PX;
+            }  
+            .pagep {
+                width: 100%;
+                border-radius: 35px;
+                cursor: pointer;
+            }
+            .foc {
+                cursor: pointer;
+            }
+            .pagema {
+                margin-top: 10px;
+                margin-bottom: 6px;
+            }
+            .foc:hover {
+                text-decoration: underline;
+            }
+            .class1 {
+                width: 360px;
+                display: inline-block;
+                vertical-align: top;
+                margin-right: 15px;
+                margin: 0%;
+            }
+            .contianer {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                column-gap: 20px;
+            }
+           
+        </style>
+
+    </head>
+
+
+    <body style="
+        margin: 0%;
+        margin-left: 10px;
+        padding-top: 60PX;
+        padding-left: 100px;"> 
+
+
+        <header>
+
+            <div class="left">
+                <img class="three_lines" src="icons_for_css/hamburger-menu.svg" alt="three_lines.png">
+                <img class="youtub_icon" src="icons_for_css/youtub_icon.jpg" alt="three_lines.png">
+            </div>
+
+            <div class="search">
+                <input type="search" name="search" class="ser" style="flex: 1;height: 45PX;" id="ser" placeholder="search..."></input>
+                <button< class="search_button">
+                    <img class="search_icon" src="icons_for_css/search.svg" alt="icon_search">
+                    <div class="tooltip">Search</div>
+                </button >
+                
+                <button class="search_button_v">
+                    <img class="microphone_ico" src="icons_for_css/voice-search-icon.svg" alt="microphone_icon">
+                    <div class="tooltip1">search with your vioce</div>
+                </button>
+                
+                
+            </div>
+
+            <div class="right">
+                <img class="home_icon" src="icons_for_css/home.svg" alt="">
+                <img class="telecharger_icon" src="icons_for_css/telecharger_icon.jpg" alt="">
+                <div class="notification_number">
+                    <img class="notification_icon" src="icons_for_css/notifications.svg" alt="">
+                    <div class="number_of_notifications">3</div>
+                </div>
+                <img class="profile_icon" src="icons_for_css/profile_icon.png" alt="">
+                
+            </div>
+
+        </header><br>
+        
+        <div class="sidebar">
+            <div class="sidebar_link">
+                <img src="icons_for_css/home.svg" alt="">
+                <div>home</div>
+            </div>
+            <div class="sidebar_link">
+                <img src="icons_for_css/explore.svg" alt="">
+                <div>explore</div>
+            </div>
+            <div class="sidebar_link">
+                <img src="icons_for_css/subscriptions.svg" alt="">
+                <div>subscriptions</div>
+            </div>
+            <div class="sidebar_link">
+                <img src="icons_for_css/originals.svg" alt="">
+                <div>originals</div>
+            </div>
+            <div class="sidebar_link">
+                <img src="icons_for_css/youtube-music.svg" alt="">
+                <div>youtube-music</div>
+            </div>
+            <div class="sidebar_link">
+                <img src="icons_for_css/library.svg" alt="">
+                <div>library</div>
+            </div>
+        </div>
+        
+        <div class="contianer">
+
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/first.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/third.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved2.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha2.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved3.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha3.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved4.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha4.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved5.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha5.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/first.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/third.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved2.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha2.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved3.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha3.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved4.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha4.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="class1">
+                <div style="position: relative;">
+                    <img class="img" src="photos/ved5.jpg" alt="image for youtub">
+                    <div style="position: absolute;bottom: 10PX;right: 10PX;background-color: black;color: white;font-family: Roboto,Arial;padding: 4PX;">12:23</div>
+                </div>
+                <div class="page-info">
+                    <div  class="page">
+                        <img src="photos/cha5.jpg"class="pagep">
+                    </div>
+
+                    <div class="info">
+                        <p class="video_title">talking tech and AI with google CEO sundar pichai!</p>
+                        <p class="video-author pagema">Marques brownlee </p>
+                        <p class="video-stats">3.4M views / 6 month ago</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+    </body>
+
+</html>
